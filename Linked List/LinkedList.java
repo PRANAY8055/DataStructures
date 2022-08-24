@@ -49,11 +49,12 @@ public class LinkedList {
 		
 		else {
 			while(n.next != null){
-				System.out.println(n.data);
+				System.out.print(n.data + " ");
 				n = n.next;
 			}
 			
-			System.out.println(n.data);
+			System.out.print(n.data + " ");
+			System.out.println();
 		}
 		
 	}
@@ -184,6 +185,41 @@ public class LinkedList {
 		
 	}
 	
+	/*
+	
+	public static void findMiddleElementEven(LinkedList list) {
+		
+		Node singlePointer,doublePointer,n;
+		
+		singlePointer = null;
+		doublePointer = null;
+		n = list.head;
+		
+		while(n.next != null) {
+			
+		}
+		
+	}	
+	
+	*/
+	
+	
+	public static void findNthNodeFromEnd(LinkedList list, int index) {
+		
+		reverseLinkedList(list);
+		
+		Node n = list.head;
+		
+		for(int i=0;i<index;i++) {
+			n = n.next;
+		}
+		
+		//show(list);
+		
+		System.out.println("Element at " + index + " from last side is " + n.data);
+		
+	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -253,9 +289,19 @@ public class LinkedList {
 		
 		System.out.println("*************************************");
 		
-		// findMiddleElementEven(list); // Best approach
+		/*
 		
+		findMiddleElementEven(list); // Best approach		
 		
+		System.out.println("*************************************");
+		
+		*/
+		
+		show(list);
+		
+		findNthNodeFromEnd(list,5);
+		
+		System.out.println("*************************************");
 		
 		
 		
