@@ -30,7 +30,7 @@ public class DoublyLinkedList {
 		
 		ListNode node = new ListNode(data);
 		
-		if(n == null) {
+		if(isEmpty()) {
 			head = node;
 			length++;
 		}
@@ -53,7 +53,7 @@ public class DoublyLinkedList {
 		
 		ListNode n = head;
 		
-		if(n == null) {
+		if(isEmpty()) {
 			System.out.println("None");
 		}
 		else {
@@ -70,7 +70,7 @@ public class DoublyLinkedList {
 		
 		ListNode n = tail;
 		
-		if(n == null) {
+		if(isEmpty()) {
 			System.out.println("None");
 		}
 		else {
@@ -98,14 +98,15 @@ public class DoublyLinkedList {
 	
 	public void insertAtFirst(int data) {
 		
-		ListNode n = head;
-		
 		ListNode node = new ListNode(data);
 		
-		if(n == null) {
+		if(isEmpty()) {
 			System.out.println("None");
+			head = node;
 		}
 		else {
+			ListNode n = head;			
+			
 			node.next = n;
 			n.previous = node;
 			head = node;
@@ -119,8 +120,9 @@ public class DoublyLinkedList {
 		
 		ListNode node = new ListNode(data);
 		
-		if(n == null) {
+		if(isEmpty()) {
 			System.out.println("None");
+			tail = node;
 		}
 		else {
 			n.next = node;
@@ -130,6 +132,43 @@ public class DoublyLinkedList {
 		}
 		
 		
+	}
+	
+	
+	public ListNode deleteFirstNode(){
+		ListNode n = head;
+		
+		if(isEmpty()) {
+			System.out.println("Nothing to delete");
+		}
+		else if(head == tail) {
+			tail = null;
+		}
+		else {
+			head.next.previous = null;
+		}	
+		
+		head = head.next;
+		n.next = null;
+		return n;
+	}
+	
+	public ListNode deleteLastNode(){
+		ListNode n = tail;
+		
+		if(isEmpty()) {
+			System.out.println("Nothing to delete");
+		}
+		else if(head == tail) {
+			head = null;
+		}
+		else {
+			tail.previous.next = null;
+		}
+		
+		tail = tail.previous;
+		n.previous = null;
+		return n;
 	}
 	
 	public static void main(String[] args) {
@@ -158,8 +197,7 @@ public class DoublyLinkedList {
 		dl.insertAtFirst(0);
 		dl.insertAtEnd(60);
 		
-		dl.showForward();
-		
+		dl.showForward();		
 		
 		System.out.println("Length is " + dl.length());
 		
@@ -175,6 +213,14 @@ public class DoublyLinkedList {
 		
 		System.out.println("Length is " + dll.length());
 		
+		System.out.println("*************************************");
+		
+		System.out.println("Deleted node is "+ dl.deleteFirstNode().data); 
+		
+		System.out.println("Deleted node is "+ dl.deleteLastNode().data); 
+		
+		dl.showForward();
+
 		System.out.println("*************************************");
 		
 		
